@@ -7,25 +7,26 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/master_btn"
+        android:id="@+id/pad_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Master"
-        android:onClick="masterButtonClicked"
+        android:onClick="paddenButtonClicked"
+        android:text="Padden"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/slave_btn"
+        android:id="@+id/kwal_btn"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:text="Slave"
-        android:onClick="slaveButtonClicked"
+        android:onClick="kwallenButtonClicked"
+        android:text="Kwallen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/master_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/pad_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
