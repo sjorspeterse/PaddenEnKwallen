@@ -58,17 +58,8 @@ class ConnectThread(device: BluetoothDevice) {
     }
 
     private fun sendInt() {
-//        mmSocket.use { socket ->
-        val outputStream = mmSocket?.outputStream
-        val writer = BufferedWriter(outputStream!!.writer())
-        val string = "Hello, World!\n"
-        while (mmSocket?.isConnected == true) {
-            Log.i(TAG, "sendString: $string")
-//            writer.write(string)
-            mmSocket?.outputStream?.write(83)
-            SystemClock.sleep(500)
-        }
-
-//        }
+        Log.i(TAG, "sendInt: 83")
+        mmSocket?.outputStream?.write(83)
+        SystemClock.sleep(500)
     }
 }
