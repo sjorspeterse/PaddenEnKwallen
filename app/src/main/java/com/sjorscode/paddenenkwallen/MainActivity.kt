@@ -82,13 +82,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun padSelected() {
-        viewModel.connectToMaster()
+//        viewModel.connectToMaster()
     }
 
 
 
     private fun kwalSelected() {
-        viewModel.toast("Toast!")
+        viewModel.sendInt(84)
     }
 
     private fun dungeonMasterSelected() {

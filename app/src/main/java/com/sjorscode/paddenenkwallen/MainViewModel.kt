@@ -10,29 +10,30 @@ import kotlin.concurrent.thread
 class MainViewModel : ViewModel() {
     val toastNotifier = MutableLiveData<String>()
     private val TAG = "MainViewModel"
+    private val master by lazy {
+        connectToMaster()
+    }
 
     fun toast(text: String) {
         toastNotifier.postValue(text)
     }
 
-    fun connectToMaster() {
+    private fun connectToMaster(): Connection? {
         val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
         if (bluetoothAdapter == null) {
             Log.w(TAG, "No bluetooth available")
         }
 
-        val master = getMaster(bluetoothAdapter) ?: return
-
-        val connectThread = ConnectThread(master)
-        thread(start = true) {
-            Log.i(TAG, "starting thread...")
-            val connected = connectThread.connect()
-            if (connected) {
-                toast("Connected!")
-            } else {
-                toast("Failed connecting")
-            }
+        val master = getMaster(bluetoothAdapter) ?: return null
+        val connection = Connection(master)
+        Log.i(TAG, "Connecting...")
+        val connected = connection.connect()
+        if (connected) {
+            toast("Connected!")
+        } else {
+            toast("Failed connecting")
         }
+        return connection
     }
 
     private fun getMaster(bluetoothAdapter: BluetoothAdapter?): BluetoothDevice? {
@@ -47,5 +48,9 @@ class MainViewModel : ViewModel() {
         toast("Effe pairen met de Dungeon Master nondeju")
 
         return null
+    }
+
+    fun sendInt(value: Int) {
+        master?.sendInt(value)
     }
 }

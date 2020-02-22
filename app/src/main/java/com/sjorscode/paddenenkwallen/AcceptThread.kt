@@ -8,12 +8,9 @@ import android.bluetooth.BluetoothSocket
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.SystemClock
 import android.util.Log
-import java.io.BufferedInputStream
 import java.io.BufferedReader
 import java.io.IOException
-import java.io.Reader
 import java.util.*
 import kotlin.concurrent.thread
 
